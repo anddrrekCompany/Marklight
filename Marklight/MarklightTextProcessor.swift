@@ -16,7 +16,9 @@
 open class MarklightTextProcessor {
 
     // MARK: Syntax highlight customisation
-
+    /**
+     Color used for plain text. Default value is black
+    */
     open var mainTextColor = MarklightColor.black
     
     /**

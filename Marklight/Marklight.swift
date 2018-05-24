@@ -147,8 +147,11 @@
 public struct Marklight {
     
     //MARK: ADD
+    /**
+     Color used for plain text. Default value is black
+    */
     public static var mainTextColor = MarklightColor.black
-    
+ 
     /**
      Color used to highlight markdown syntax. Default value is light grey.
      */
