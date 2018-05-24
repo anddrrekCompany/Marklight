@@ -145,6 +145,10 @@
  - see: `MarklightTextStorage`
  */
 public struct Marklight {
+    
+    //MARK: ADD
+    public static var mainTextColor = MarklightColor.black
+    
     /**
      Color used to highlight markdown syntax. Default value is light grey.
      */
@@ -226,6 +230,11 @@ public struct Marklight {
     public static func applyMarkdownStyle(_ styleApplier: MarklightStyleApplier, string: String, affectedRange paragraphRange: NSRange) {
         let textStorageNSString = string as NSString
         let wholeRange = NSMakeRange(0, textStorageNSString.length)
+        
+        //MARK: HERE change plain text color
+        styleApplier.addAttribute(.foregroundColor,
+                                  value: mainTextColor,
+                                  range: paragraphRange)
         
         let codeFont = Marklight.codeFont(textSize)
         let quoteFont = Marklight.quoteFont(textSize)

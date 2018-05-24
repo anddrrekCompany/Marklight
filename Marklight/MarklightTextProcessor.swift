@@ -17,6 +17,8 @@ open class MarklightTextProcessor {
 
     // MARK: Syntax highlight customisation
 
+    open var mainTextColor = MarklightColor.black
+    
     /**
      Color used to highlight markdown syntax. Default value is light grey.
      */
@@ -55,14 +57,13 @@ open class MarklightTextProcessor {
 
     // MARK: Syntax highlighting
 
-    open func processEditing(
-        styleApplier: MarklightStyleApplier,
-        string: String,
-        editedRange: NSRange
-        ) -> MarklightProcessingResult {
+    open func processEditing( styleApplier: MarklightStyleApplier,
+                              string: String,
+                              editedRange: NSRange ) -> MarklightProcessingResult {
 
         let editedAndAdjacentParagraphRange = self.editedAndAdjacentParagraphRange(in: string, editedRange: editedRange)
 
+        Marklight.mainTextColor = mainTextColor
         Marklight.syntaxColor = syntaxColor
         Marklight.codeFontName = codeFontName
         Marklight.codeColor = codeColor
@@ -72,17 +73,13 @@ open class MarklightTextProcessor {
         Marklight.textSize = textSize
         Marklight.hideSyntax = hideSyntax
 
-        resetMarklightAttributes(
-            styleApplier: styleApplier,
-            range: editedAndAdjacentParagraphRange)
-        Marklight.applyMarkdownStyle(
-            styleApplier,
-            string: string,
-            affectedRange: editedAndAdjacentParagraphRange)
+        resetMarklightAttributes(styleApplier: styleApplier,
+                                 range: editedAndAdjacentParagraphRange)
+        Marklight.applyMarkdownStyle(styleApplier,
+                                        string: string,
+                                        affectedRange: editedAndAdjacentParagraphRange)
 
-        return MarklightProcessingResult(
-            editedRange: editedRange,
-            affectedRange: editedAndAdjacentParagraphRange)
+        return MarklightProcessingResult( editedRange: editedRange, affectedRange: editedAndAdjacentParagraphRange)
     }
 
     fileprivate func editedAndAdjacentParagraphRange(in string: String, editedRange: NSRange) -> NSRange {

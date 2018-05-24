@@ -103,10 +103,9 @@ open class MarklightTextStorage: NSTextStorage, MarklightStyleApplier {
         self.isBusyProcessing = true
         defer { self.isBusyProcessing = false }
 
-        let processingResult = marklightTextProcessor.processEditing(
-            styleApplier: self,
-            string: self.string,
-            editedRange: editedRange)
+        let processingResult = marklightTextProcessor.processEditing(styleApplier: self,
+                                                                        string: self.string,
+                                                                        editedRange: editedRange)
 
         defer {
             // Include surrounding paragraphs in layout manager's styling pass
