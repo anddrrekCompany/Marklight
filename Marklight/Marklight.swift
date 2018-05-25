@@ -146,7 +146,6 @@
  */
 public struct Marklight {
     
-    //MARK: ADD
     /**
      Color used for plain text. Default value is black
     */
@@ -234,7 +233,6 @@ public struct Marklight {
         let textStorageNSString = string as NSString
         let wholeRange = NSMakeRange(0, textStorageNSString.length)
         
-        //MARK: HERE change plain text color
         styleApplier.addAttribute(.foregroundColor,
                                   value: mainTextColor,
                                   range: paragraphRange)

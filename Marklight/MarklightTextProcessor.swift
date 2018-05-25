@@ -125,13 +125,15 @@ open class MarklightTextProcessor {
      - see: [Text Styles](xcdoc://?url=developer.apple.com/library/ios/documentation/UIKit/Reference/UIFontDescriptor_Class/index.html#//apple_ref/doc/constant_group/Text_Styles)
      */
     open var fontTextStyle : String = UIFontTextStyle.body.rawValue
-
+    
     /// Text size measured in points.
-    fileprivate var textSize: CGFloat {
-        return MarklightFontDescriptor
-            .preferredFontDescriptor(withTextStyle: UIFontTextStyle(rawValue: self.fontTextStyleValidated))
-            .pointSize
-    }
+    open var textSize: CGFloat = 20
+    
+//    fileprivate var textSize: CGFloat {
+//        return MarklightFontDescriptor
+//            .preferredFontDescriptor(withTextStyle: UIFontTextStyle(rawValue: self.fontTextStyleValidated))
+//            .pointSize
+//    }
 
     // We are validating the user provided fontTextStyle `String` to match the
     // system supported ones.
